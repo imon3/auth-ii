@@ -6,7 +6,18 @@ const secret = require('../secret/secret');
 const Users = require('../users/users-model');
 
 // TOKEN GENERATOR
+function generateToken(user) {
+    const payload = {
+        subject: user.id,
+        username: user.username
+    };
 
+    const options = {
+        expiresIn: '1d'
+    }
+
+    return jwt.sign(payload, secret, options)
+}
 
 // POST REQUEST TO REGISTER A USER
 router.post('/register', (req, res) => {
@@ -26,12 +37,13 @@ router.post('/register', (req, res) => {
 
 // POST REQUEST TO LOGIN USER
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
+    let { username, password } = req.body;
 
     Users.findUserBy({ username })
         .first()
         .then(user => {
-            if (user && bycryptjs.compareSync(password, user.password)) {
+            console.log(user)
+            if (user && bcryptjs.compareSync(password, user.password)) {
                 const token = generateToken(user);
                 res.status(200).json({
                     message: `Welcome ${user.username}`,
