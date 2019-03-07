@@ -15,7 +15,7 @@ exports.up = function (knex, Promise) {
 
         users
             .string('department', 128)
-
+            .notNullable()
     })
 };
 
