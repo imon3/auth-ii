@@ -4,7 +4,7 @@ function User(props) {
     console.log(props)
     return (
         <div>
-            <div>{props.username}</div>
+            <div>{props.user.username}</div>
         </div>
     )
 }

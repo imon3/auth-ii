@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import User from './User';
+import Authentication from '../auth/Authentication';
 
 class Users extends React.Component {
     state = {
@@ -18,6 +19,7 @@ class Users extends React.Component {
     }
 
     render() {
+        console.log(this.state.users)
         return (
             <div>
                 {this.state.users.map(user => {
@@ -28,4 +30,4 @@ class Users extends React.Component {
     }
 }
 
-export default Users;
+export default Authentication(Users);
