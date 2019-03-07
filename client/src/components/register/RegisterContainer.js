@@ -7,7 +7,8 @@ class Register extends React.Component {
 
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            department: ''
         }
     }
 
