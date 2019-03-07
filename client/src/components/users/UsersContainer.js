@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import User from './User';
 
 class Users extends React.Component {
     state = {
@@ -18,7 +19,11 @@ class Users extends React.Component {
 
     render() {
         return (
-            <div></div>
+            <div>
+                {this.state.users.map(user => {
+                    return <User key={user.id} user={user} />
+                })}
+            </div>
         )
     }
 }
