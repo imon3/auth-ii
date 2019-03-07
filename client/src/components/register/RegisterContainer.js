@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 class Register extends React.Component {
     constructor() {
@@ -11,13 +12,38 @@ class Register extends React.Component {
         }
     }
 
-    // handleInput = e => {
-    //     this
-    // }
+    handleInput = e => {
+        this.setState({
+            ...this.state,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault()
+
+        axios.post('http://localhost:5000/api/auth/register', this.state)
+            .then(res => {
+                localStorage.setItem('jwt', res.data.token)
+                this.setState({
+                    username: '',
+                    password: ''
+                })
+                this.props.history.push('/users')
+            })
+            .catch(err => console.log(err))
+    }
 
     render() {
         return (
-            <div></div>
+            <div>
+                <h2>Sign Up</h2>
+                <form onSubmit={this.handleSubmit}>
+                    <input placeholder='Create Username' type='text' name='username' value={this.state.username} onChange={this.handleInput} />
+                    <input placeholder='Create Password' type='text' name='password' value={this.state.password} onChange={this.handleInput} />
+                    <button type='submit'>Sign Up</button>
+                </form>
+            </div>
         )
     }
 }
