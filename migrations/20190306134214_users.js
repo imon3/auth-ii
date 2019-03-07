@@ -12,6 +12,10 @@ exports.up = function (knex, Promise) {
         users
             .string('password', 128)
             .notNullable()
+
+        users
+            .string('department', 128)
+
     })
 };
 

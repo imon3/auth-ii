@@ -28,6 +28,7 @@ class Login extends React.Component {
                     username: '',
                     password: ''
                 })
+                this.props.history.push('/users')
             })
             .catch(err => console.log(err))
 

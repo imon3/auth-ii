@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
 
 class Register extends React.Component {
     constructor() {
@@ -27,7 +26,8 @@ class Register extends React.Component {
                 localStorage.setItem('jwt', res.data.token)
                 this.setState({
                     username: '',
-                    password: ''
+                    password: '',
+                    department: ''
                 })
                 this.props.history.push('/users')
             })
@@ -41,6 +41,7 @@ class Register extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder='Create Username' type='text' name='username' value={this.state.username} onChange={this.handleInput} />
                     <input placeholder='Create Password' type='text' name='password' value={this.state.password} onChange={this.handleInput} />
+                    <input placeholder='Enter Department' type='text' name='department' value={this.state.department} onChange={this.handleInput} />
                     <button type='submit'>Sign Up</button>
                 </form>
             </div>
