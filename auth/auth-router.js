@@ -14,9 +14,9 @@ function generateToken(user) {
 
     const options = {
         expiresIn: '1d'
-    }
+    };
 
-    return jwt.sign(payload, secret, options)
+    return jwt.sign(payload, secret.jwtSecret, options)
 }
 
 // POST REQUEST TO REGISTER A USER
