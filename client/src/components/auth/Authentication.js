@@ -17,7 +17,7 @@ export default function (Component) {
 
         render() {
             const token = localStorage.getItem('jwt');
-            const notLoggedIn = <div>Please Log In</div>
+            const notLoggedIn = <h2>Please Log In or Sign Up</h2>
 
             return (
                 <div>{token ? <Component {...this.props} /> : notLoggedIn}</div>

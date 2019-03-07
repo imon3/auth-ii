@@ -21,6 +21,8 @@ class App extends Component {
             <NavLink to='/login' >Log-In</NavLink>
             &nbsp; &nbsp;
             <NavLink to='/login' onClick={this.logout} >Log-Out</NavLink>
+            &nbsp; &nbsp;
+            <NavLink to='/users'>Users</NavLink>
           </nav>
         </header>
 
